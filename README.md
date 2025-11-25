@@ -467,6 +467,44 @@ Over multiple weeks, I implemented and documented every stage—from RTL validat
 - **Advanced Routing Debug:**  
   Diagnosed and debugged routing congestion using iterative parameter tuning, heatmap analysis, and reference-based benchmarking—demonstrating advanced physical design troubleshooting skills.
 
+  
+
+## 🟦  EXTRA EFFORT TO CLEAR THE ROUGTING STAGE
+
+<details>
+<summary>Click to expand</summary>
+
+<br>
+
+During Week-9, I encountered critical routing failures while attempting the VSDBabySoC flow, primarily due to congestion-related errors (notably `grt0116`). These issues are increasingly reported in the newer (2024–2025) OpenROAD builds. The recent versions of OpenROAD have introduced significant changes to the global and detailed routing engines—including revised congestion estimation models, pin-access algorithms, and guide generation logic. While the intention is to achieve long-term performance improvements, these rapid changes often introduce instability, especially for designs based on the Sky130 PDK. As a result, routing outcomes have become less predictable and more error-prone compared to previous stable releases.
+
+Recognizing that earlier VSDBabySoC implementations, VSD workshops, and successful Sky130 tapeouts relied on well-tested OpenROAD releases (from the 2023 version family), I attempted to revert to a stable 2023 OpenROAD installation. This involves removing existing recent OpenROAD installations and seeking to install a version matching those known to yield stable results (e.g., 2023.08 or 2023.10), as recommended in various open-source digital design communities.
+
+However, this process proved unexpectedly difficult: the OpenROAD project has pruned, rewritten, or entirely removed many of the older tags and commit histories from their current public repository. This means that the historically stable versions used by earlier VSD students and Sky130 projects are now inaccessible via conventional GitHub tag checkout. Moreover, some tags that superficially appear to remain in the tag list actually point to incomplete or pruned source histories, resulting in failed builds during the CMake configuration phase.
+
+To work around this, I had to explore multiple alternative solutions:
+
+- **Identifying surviving stable tags:** Searching for older tags/branches that still contain complete and buildable source code.
+- **Verifying source completeness:** Attempting local builds to confirm that the tags include all necessary dependencies and files.
+- **Exploring prebuilt binaries and containers:** Considering Docker images or precompiled OpenROAD executables from VSD workshops or third-party archives.
+- **Community consultation:** Referring to open issues, community posts, and VSD forum threads to gather recommendations on currently reproducible OpenROAD environments for the Sky130 flow.
+
+The central motivation for these efforts was to restore a stable, reproducible digital design flow and to eliminate version-dependent defects—particularly those affecting the critical routing stage. This experience highlights the importance of tool version management and the challenges posed by upstream repository changes in research and educational silicon design projects.
+
+<img width="1920" height="923" alt="w9-1" src="https://github.com/user-attachments/assets/9f015ff4-d5bc-4680-a5cf-3a66166aa974" />
+<img width="1920" height="923" alt="w9-2" src="https://github.com/user-attachments/assets/092c3d79-66ab-4d09-bd26-7b2e8e21083d" />
+<img width="1920" height="923" alt="w9-3" src="https://github.com/user-attachments/assets/0d5b786c-6a9c-4196-b0f1-7cbd9ccadf22" />
+<img width="1920" height="923" alt="w9-4" src="https://github.com/user-attachments/assets/3c78a7b1-fe85-4b7f-838d-60cb2cd1dd4b" />
+<img width="1920" height="923" alt="w9-5" src="https://github.com/user-attachments/assets/cfa507b3-3c62-4507-a87c-dc112fb52a29" />
+<img width="1920" height="923" alt="w9-6" src="https://github.com/user-attachments/assets/6697f223-7542-4c16-8a4c-4c782fa24757" />
+<img width="1920" height="923" alt="w9-7" src="https://github.com/user-attachments/assets/3baec6a5-95bd-4da1-b17a-8fa0852e00b6" />
+
+</details>
+
+
+
+
+
 ## 🚀 Skills & Tools Utilized
 
 - **OpenROAD/OpenLANE**: Full RTL-to-GDS flow
